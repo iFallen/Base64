@@ -15,10 +15,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let string = "{\"username\":\"juanfelix\",\"info\":\"你好\",\"tel\":\"123456789\"}"
         //let string = "Hello,你好,a123"
-        let encodeText = string.zx_base64Encode()
-        let decodeText = encodeText.zx_base64Decode()
-        print("encode text:\(encodeText)")
-        print("decode text:\(decodeText)")
+        print("Custom")
+        let encodeText1 = string.zx_base64Encode(isCustom: true)
+        let decodeText1 = encodeText1.zx_base64Decode(isCustom: true)
+        print("encode text:\(encodeText1)")
+        print("decode text:\(decodeText1)")
+        
+        print("Standard")
+        let encodeText2 = string.zx_base64Encode()
+        let decodeText2 = encodeText2.zx_base64Decode()
+        print("encode text:\(encodeText2)")
+        print("decode text:\(decodeText2)")
         
         //System Method
         let data = string.data(using: .utf8, allowLossyConversion: true)
