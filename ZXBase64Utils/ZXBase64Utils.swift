@@ -53,6 +53,8 @@ extension String {
                 base64String.append(keys[index])
                 base64String.append("=")
             }
+            bytes.deinitialize(count: strLen)
+            bytes.deallocate()
             if base64String.count > 0 {
                 return base64String
             }
@@ -88,6 +90,8 @@ extension String {
             bytes[i] = UInt8(String.binTodec(number: String(resultString[sIndex..<eIndex])))
         }
         let data = Data(bytes: bytes, count: resultString.count / 8)
+        bytes.deinitialize(count: resultString.count / 8)
+        bytes.deallocate()
         if let string = String(data: data, encoding: String.Encoding.utf8) {
             return string
         }
